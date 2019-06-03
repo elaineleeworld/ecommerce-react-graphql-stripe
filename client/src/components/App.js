@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Container, Box, Heading } from "gestalt";
+import { Container, Box, Heading, Card, Image, Text } from "gestalt";
+import { Link } from "react-router-dom";
 import "./App.css";
 import Strapi from "strapi-sdk-javascript/build/main";
 const apiUrl = process.env.API_URL || "http://localhost:1337";
@@ -33,6 +34,8 @@ class App extends Component {
     }
   }
   render() {
+    const { brands } = this.state;
+
     return (
       <Container>
         <Box display="flex" justifyContent="center" marginBottom={2}>
@@ -40,6 +43,27 @@ class App extends Component {
             Brew Brands
           </Heading>
         </Box>
+        {brands.map(brand => (
+          <Box margin={2} width={200} key={brand.id} display="flex" justifyContent="around">
+            <Card
+              image={
+                <Box height={200} width={200}>
+                  <Image alt="Brand" naturalHeight={1} naturalWidth={1} src={`${apiUrl}${brand.image.url}`} />
+                </Box>
+              }
+            >
+              <Box display="flex" justifyContent="center" alignItems="center" direction="column">
+                <Text bold size="xl">
+                  {brand.name}
+                </Text>
+                <Text>{brand.description}</Text>
+                <Text size="xl">
+                  <Link to={`/${brands._id}`}>See Brews</Link>
+                </Text>
+              </Box>
+            </Card>
+          </Box>
+        ))}
       </Container>
     );
   }
