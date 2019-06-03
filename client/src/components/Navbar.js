@@ -18,7 +18,7 @@ const Navbar = () => (
         </Box>
 
         <Heading size="xs" color="orange">
-          BrewHaha
+          Beers n Brews
         </Heading>
       </Box>
     </NavLink>
