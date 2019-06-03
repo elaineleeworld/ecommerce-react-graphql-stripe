@@ -11,7 +11,7 @@ const Navbar = () => (
     </NavLink>
 
     {/* Title and logo */}
-    <NavLink to="/">
+    <NavLink activeClassName="active" to="/">
       <Box display="flex" alignItems="center">
         <Box height={50} width={50}>
           <Image alt="BrewHaha Logo" naturalHeight={1} naturalWidth={1} src="./icons/logo.svg" />
@@ -22,7 +22,7 @@ const Navbar = () => (
         </Heading>
       </Box>
     </NavLink>
-    <NavLink to="/signup">
+    <NavLink activeClassName="active" to="/signup">
       <Text size="xl" color="white">
         Sign Up
       </Text>
